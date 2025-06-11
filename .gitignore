@@ -47,3 +47,5 @@ Thumbs.db
 
 # Archivos de MongoDB (si usas MongoDB localmente)
 data/db/
+
+.pnpm add express mongoose jsonwebtoken bcryptjs
