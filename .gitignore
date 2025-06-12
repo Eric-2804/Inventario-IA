@@ -48,4 +48,8 @@ Thumbs.db
 # Archivos de MongoDB (si usas MongoDB localmente)
 data/db/
 
+<<<<<<< HEAD
 .pnpm-store/
+=======
+.pnpm-store/
+>>>>>>> 13e9c2025b0c620b0764cd292771121e676df831
