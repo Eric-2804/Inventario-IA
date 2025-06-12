@@ -2,6 +2,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import authRoutes from './routes/auth.js';
+import clienteRoutes from './routes/cliente.js';
 import { verificarToken } from './middlewares/auth.js';
 
 const app = express();
@@ -25,4 +26,6 @@ app.get('/protegido', verificarToken, (req, res) => {
 app.listen(PORT, () => {
   console.log(`Servidor escuchando en http://localhost:${PORT}`);
 });
+
+app.use('/clientes', clienteRoutes);
 
