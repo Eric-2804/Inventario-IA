@@ -1,7 +1,8 @@
-const jwt = require('jsonwebtoken');
+// middlewares/auth.js
+import jwt from 'jsonwebtoken';
 const SECRET = 'clave-ultrasecreta';
 
-function verificarToken(req, res, next) {
+export function verificarToken(req, res, next) {
   const authHeader = req.headers['authorization'];
   const token = authHeader?.split(' ')[1];
 
@@ -13,5 +14,3 @@ function verificarToken(req, res, next) {
     next();
   });
 }
-
-module.exports = verificarToken;

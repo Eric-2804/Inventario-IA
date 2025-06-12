@@ -1,10 +1,11 @@
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const Usuario = require('../models/usuario');
+// services/auth.js
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import Usuario from '../models/usuario.js';
 
-const SECRET = 'clave-ultrasecreta'; // en producción usa una variable de entorno
+const SECRET = 'clave-ultrasecreta';
 
-async function registrarUsuario(username, password) {
+export async function registrarUsuario(username, password) {
   const existe = await Usuario.findOne({ username });
   if (existe) throw new Error('El usuario ya existe');
 
@@ -13,7 +14,7 @@ async function registrarUsuario(username, password) {
   return await nuevoUsuario.save();
 }
 
-async function loginUsuario(username, password) {
+export async function loginUsuario(username, password) {
   const usuario = await Usuario.findOne({ username });
   if (!usuario) throw new Error('Usuario no encontrado');
 
@@ -23,5 +24,3 @@ async function loginUsuario(username, password) {
   const token = jwt.sign({ id: usuario._id, username }, SECRET, { expiresIn: '1h' });
   return { token, username };
 }
-
-module.exports = { registrarUsuario, loginUsuario };

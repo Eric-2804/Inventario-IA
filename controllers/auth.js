@@ -1,6 +1,7 @@
-const { registrarUsuario, loginUsuario } = require('../services/auth');
+// controllers/auth.js
+import { registrarUsuario, loginUsuario } from '../services/auth.js';
 
-async function register(req, res) {
+export async function register(req, res) {
     try {
         const { username, password } = req.body;
         const usuario = await registrarUsuario(username, password);
@@ -10,7 +11,7 @@ async function register(req, res) {
     }
 }
 
-async function login(req, res) {
+export async function login(req, res) {
     try {
         const { username, password } = req.body;
         const result = await loginUsuario(username, password);
@@ -20,4 +21,3 @@ async function login(req, res) {
     }
 }
 
-module.exports = { register, login };
