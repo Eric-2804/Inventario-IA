@@ -4,10 +4,12 @@ import mongoose from 'mongoose';
 import authRoutes from './routes/auth.js';
 import clienteRoutes from './routes/cliente.js';
 import { verificarToken } from './middlewares/auth.js';
+import productoRoutes from './routes/producto.js';
+
+
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-
 app.use(express.json());
 
 mongoose.connect('mongodb://localhost:27017/inventario', {
@@ -28,4 +30,6 @@ app.listen(PORT, () => {
 });
 
 app.use('/clientes', clienteRoutes);
+
+app.use('/productos', productoRoutes);
 
